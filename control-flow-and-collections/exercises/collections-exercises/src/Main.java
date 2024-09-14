@@ -5,6 +5,15 @@ import java.util.Scanner;
 import java.util.List;
 
 public class Main {
+    public static int[] makeIntList(int... values)
+    {
+        int[] intList = new int[values.length];
+        for (int i = 0; i < values.length; i ++)
+        {
+            intList[i] = values[i];
+        }
+        return intList;
+    }
     public static void main(String[] args)
     {
         String str = "I would not, could not, in a box. I would not, could not " +
@@ -32,16 +41,12 @@ public class Main {
         all the even numbers in an ArrayList. Within main,
         create a list with at least 10 integers and call your method on the list.*/
         ArrayList<Integer> numbers = new ArrayList<>();
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        numbers.add(4);
-        numbers.add(5);
-        numbers.add(6);
-        numbers.add(7);
-        numbers.add(8);
-        numbers.add(9);
-        numbers.add(10);
+
+        int[] intList = {3, 34, 432, 432, 432, 23, 4, 3,4};
+        for (int number : intList)
+        {
+            numbers.add(number);
+        }
         int sum = 0;
         for (Integer number: numbers)
         {
