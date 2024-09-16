@@ -30,20 +30,91 @@ public class Student {
 
 
     //TODO: Uncomment and complete the getGradeLevel method here:
-//    public String getGradeLevel() {
-//        // Determine the grade level of the student based on numberOfCredits
-//    }
+    public String getGradeLevel() {
+        // Determine the grade level of the student based on numberOfCredits
+        if (this.numberOfCredits <=0)
+        {
+            return "You received a zero.";
+        }
+         else if (this.numberOfCredits <= 29 )
+        {
+            return "Freshman";
+        }
+         else if (this.numberOfCredits > 29 && this.numberOfCredits <= 59)
+        {
+            return "Sophomore";
+        }
+         else if (this.numberOfCredits > 59 && this.numberOfCredits <= 89)
+        {
+            return "Junior";
+        }
+         else if (this.numberOfCredits > 89)
+        {
+            return "Senior";
+        }
+         else {
+             return "We dont know what to categorize you as.";
+        }
+    }
 
     // TODO: Complete the addGrade method.
     public void addGrade(int courseCredits, double grade) {
         // Update the appropriate fields: numberOfCredits, gpa
+//        gpa = (total quality score) / (total number of credits)
+//        The quality score for a class is found by multiplying the letter grade score (0.0-4.0) by the number of credits.
+//
+//The total quality score is the sum of the quality scores for all classes.
+        double totalQualityScore = this.gpa * this.numberOfCredits;
+        totalQualityScore += courseCredits * grade;
+        this.numberOfCredits += courseCredits;
+        this.gpa = totalQualityScore/this.numberOfCredits;
+//        System.out.println("Course credits: " + courseCredits + " Grade: " + grade);
+//        double qualityScore = grade * courseCredits;
+//        System.out.println(qualityScore + " " + gpa + " " + numberOfCredits);
+//        double totalQualityScore = this.gpa * this.numberOfCredits;
+//        System.out.println(totalQualityScore);
+//        totalQualityScore += qualityScore;
+//        System.out.println(totalQualityScore);
+//        this.numberOfCredits += courseCredits;
+//        this.gpa = totalQualityScore/this.numberOfCredits;
+//        System.out.println(qualityScore + " " + gpa + " " + numberOfCredits);
+//        System.out.println(qualityScore + " " + gpa + " " + numberOfCredits);
+
+//
     }
 
     // TODO: Add your custom 'toString' method here. Make sure it returns a well-formatted String rather
     //  than just the class fields.
+    public String toString(){
+        return "Student " + this.name + "\n" +
+                "Student ID " + this.studentId + "\n" +
+                "Number of Credits " + this.numberOfCredits + "\n" +
+                "Student GPA " + this.gpa + "\n";
+
+    }
 
     // TODO: Add your custom 'equals' method here. Consider which fields should match in order to call two
     //  Student objects equal.
+    public boolean equals(Student student)
+    {
+        if (student == null)
+        {
+            return false;
+        }
+        else if (student.getClass() != this.getClass()){
+            return false;
+        }
+        else if (student.studentId != this.studentId)
+        {
+            return false;
+        }
+        else if(student.name != this.name){
+            return false;
+        }
+        else {
+            return  true;
+        }
+    }
 
     public String getName() {
         return name;
