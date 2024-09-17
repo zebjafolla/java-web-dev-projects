@@ -4,23 +4,28 @@ import java.util.ArrayList;
 
 public class Menu {
     private String menuName;
-    private ArrayList<MenuItem> items;
+    private ArrayList<MenuItem> items = new ArrayList <MenuItem>();
 
-    public ArrayList<MenuItem> getItems() {
-        return items;
+    public String getItems() {
+        String itemList = "Menu: " + menuName + "\n----------------";
+        for (MenuItem item : this.items){
+            itemList += "\n" + item.toString();
+        }
+        return itemList;
     }
 
-    public void setItems(ArrayList<MenuItem> items ) {
-        this.items = items;
+    public void addItem(MenuItem item){
+        items.add(item);
+        item.setCategory(this.menuName);
     }
-
-    public void addItem(MenuItem item) {
-        this.items.add(item);
+    public Menu(){
+        this.menuName = "Default MenuName";
     }
-
-    public Menu(String menuName, ArrayList<MenuItem> menuItem) {
+    public Menu(String menuName) {
         this.menuName = menuName;
-        this.items = menuItem;
+    }
 
+    public String getMenuName() {
+        return this.menuName;
     }
 }
