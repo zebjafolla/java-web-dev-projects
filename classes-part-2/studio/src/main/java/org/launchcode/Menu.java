@@ -3,8 +3,8 @@ package org.launchcode;
 import java.util.ArrayList;
 
 public class Menu {
-    private String menuName;
-    private ArrayList<MenuItem> items = new ArrayList <MenuItem>();
+    private final String menuName;
+    private final ArrayList<MenuItem> items = new ArrayList <MenuItem>();
 
     public String getItems() {
         String itemList = "Menu: " + menuName + "\n----------------";
@@ -14,13 +14,40 @@ public class Menu {
         return itemList;
     }
 
-    public void addItem(MenuItem item){
-        items.add(item);
-        item.setCategory(this.menuName);
+    public void addItem(MenuItem item) {
+        item.setCategory(getMenuName());
+        this.items.add(item);
     }
-    public Menu(){
-        this.menuName = "Default MenuName";
+
+    public void removeItem(Menu item){
+
     }
+
+    public String getItem(String str) {
+        String itemLowerCase;
+        String matchingItems = "";
+//        ArrayList<MenuItem> foundItems = new ArrayList<MenuItem>();
+        for (MenuItem item : items) {
+            itemLowerCase = item.getName().toLowerCase();
+            if (itemLowerCase.contains(str.toLowerCase())) {
+                matchingItems += "\n" + item.toString();
+//                foundItems.add(item);
+            }
+        }
+        if (matchingItems.isEmpty()){
+            return "No item with name " + '\'' + str + '\'' + " found in the " + getMenuName() + " menu.";
+        }
+        return matchingItems;
+//        else if (foundItems.size() > 1)
+//        {
+//            for (MenuItem item : foundItems)
+//            {
+//
+//            }
+        }
+
+
+
     public Menu(String menuName) {
         this.menuName = menuName;
     }
