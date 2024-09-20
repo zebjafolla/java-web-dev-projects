@@ -19,15 +19,23 @@ public class BalancedBrackets {
      * @param str - to be validated
      * @return true if balanced, false otherwise
      */
+
     public static boolean hasBalancedBrackets(String str) {
-        int brackets = 0;
-        for (char ch : str.toCharArray()) {
-            if (ch == '[') {
-                brackets++;
-            } else if (ch == ']') {
-                brackets--;
+        int ctrOpen = 0;
+        int ctrClose = 0;
+        if (str instanceof String) {
+            for (char ch : str.toCharArray()) {
+                if (ch == '[') {
+                    if (ctrClose > ctrOpen) {
+                        return false;
+                    }
+                    ctrOpen++;
+                } else if (ch == ']') {
+                    ctrClose++;
+                }
             }
+            return (ctrClose == ctrOpen);
         }
-        return brackets == 0;
+        return false;
     }
 }

@@ -39,7 +39,8 @@ class CarTest {
     }
     //TODO: can't have more gas than tank size, expect an exception
     @Test
-    public void testMoreGasThanGasTankSize(){
+    public void testGasOverfillException(){
+        assertThrows(IllegalArgumentException.class, () -> );
         assertEquals(true, test_car.getGasTankSize() <= test_car.getGasTankLevel());
     }
 }
