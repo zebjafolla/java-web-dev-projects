@@ -23,6 +23,9 @@ public class BalancedBrackets {
     public static boolean hasBalancedBrackets(String str) {
         int ctrOpen = 0;
         int ctrClose = 0;
+        if(str == null){
+            throw new IllegalArgumentException("Input cannot be null");
+        }
         if (str instanceof String) {
             for (char ch : str.toCharArray()) {
                 if (ch == '[') {
@@ -37,5 +40,9 @@ public class BalancedBrackets {
             return (ctrClose == ctrOpen);
         }
         return false;
+    }
+
+    public static boolean hasBalancedBrackets(Object object){
+        throw new IllegalArgumentException("Input must be a string");
     }
 }
