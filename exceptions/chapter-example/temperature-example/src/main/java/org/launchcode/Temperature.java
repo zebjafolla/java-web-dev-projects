@@ -11,9 +11,14 @@ public class Temperature {
 
         double absoluteZeroFahrenheit = -459.67;
 
-        if (aFahrenheit < absoluteZeroFahrenheit) {
-            System.out.println("Value is below absolute zero");
+    try{if (aFahrenheit < absoluteZeroFahrenheit) {
+        throw new TemperatureException("The temperature is too low!");
+    }}catch (TemperatureException e){
+            e.printStackTrace();
         }
+        System.out.println("The temp is " + aFahrenheit);
+
+
 
         fahrenheit = aFahrenheit;
     }
